@@ -82,7 +82,7 @@ def search():
 # Analysis and About page routes
 @app.route("/analysis")
 def analysis():
-    return render_template('analysis.html')
+    print("This is the analysis page")
 
 @app.route("/about")
 def about():
