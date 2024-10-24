@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+    <div class="container">
+        {% if posts %}
+            {% for post in posts %}
+            <div class="card">
+                <h2>{{ post.category }}</h2>
+                <p class="date">{{ post.date_added }}</p> <!-- Display formatted date -->
+                <p>{{ post.content }}</p>
+                <p class="amount">Amount: {{ post.amount }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

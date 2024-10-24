@@ -1,0 +1,23 @@
+body {
+    background: #fafafa;  /* ensures overall alignment */
+    color: #333333;
+    margin-top: 5rem;
+  } 
+    .bg-steel {
+      background-color: #000000;  /*sets bg colour of navigation bar as black*/
+    }
+    .site-header .navbar-nav .nav-link { /*gives the About,add new and log out white colour*/
+      color: #cbd5db;
+    }
+    .content-section {          /*creates the box */
+      background: #ffffff;
+      padding: 10px 20px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    } 
+    .article-metadata {        /*contributes to the formatting and line inside the box */
+      padding-bottom: 1px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #e3e3e3
+    }

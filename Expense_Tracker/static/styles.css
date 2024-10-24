@@ -1,0 +1,108 @@
+/* Base styling for body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling for the navigation bar */
+nav {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    padding: 15px 25px; /* Padding to adjust height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Links in the navigation bar */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+/* Styling for the search container */
+.search-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Align search bar to the right */
+}
+
+.search-container input {
+    padding: 10px; /* Reduced padding for larger appearance */
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em; /* Increase font size for better visibility */
+    width: 300px; /* Increased width of the search bar */
+}
+
+/* Stack the cards one below the other */
+.container {
+    display: block; /* Display the cards as block elements */
+    padding: 20px;
+}
+
+/* Styling for the cards */
+.card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px; /* Add margin between cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    position: relative; /* For positioning the buttons */
+    min-height: 120px; /* Set a minimum height for the card */
+    max-height: 150px; /* Set a maximum height for the card */
+    overflow: hidden; /* Prevent the content from overflowing */
+}
+
+/* Hover effect for cards */
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Styling for the date inside the card */
+.card .date {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Delete and update buttons */
+.delete-btn, .update-btn {
+    border: none;
+    padding: 8px 16px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #e74c3c; /* Red for delete */
+    right: 90px; /* Positioned near the update button */
+    border-radius: 25px; /* Rounded corners */
+    display:none;
+}
+
+/* Update button styling */
+.update-btn {
+    background-color: #3498db; /* Blue for update */
+    right: 10px; /* Positioned towards the top right */
+    border-radius: 25px; /* Oval pill-shaped */
+    display:none;
+}
+.error-messages {
+    color: red;
+    font-size: 0.9em;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Expense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Update Expense</h1>
+    <form action="/update/{{ post.id }}" method="POST">
+        <label for="category">Category:</label>
+        <input type="text" name="category" value="{{ post.category }}" required><br>
+
+        <label for="content">Content:</label>
+        <input type="text" name="content" value="{{ post.content }}" required><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" value="{{ post.amount }}" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date_added" value="{{ post.date_added.strftime('%Y-%m-%d') }}" required><br>
+
+        <button type="submit">Update Expense</button>
+    </form>
+</body>
+</html>

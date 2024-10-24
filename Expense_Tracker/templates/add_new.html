@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Expense</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #2e2e2e; /* Dark grey background */
+            color: white; /* Text color */
+            font-family: Arial, sans-serif; /* Font style */
+        }
+        h1 {
+            text-align: center; /* Center the title */
+            margin-bottom: 20px; /* Spacing below the title */
+        }
+        form {
+            display: flex; /* Flexbox layout */
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items */
+            max-width: 400px; /* Max width for form */
+            margin: auto; /* Center form */
+            padding: 20px; /* Padding around form */
+            border-radius: 10px; /* Rounded corners */
+            background-color: #444; /* Slightly lighter grey for the form background */
+        }
+        label {
+            margin-bottom: 5px; /* Spacing below labels */
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%; /* Full width inputs */
+            padding: 10px; /* Padding inside inputs */
+            margin-bottom: 15px; /* Spacing below inputs */
+            border: none; /* Remove default border */
+            border-radius: 25px; /* Pill-shaped inputs */
+            background-color: #666; /* Input background color */
+            color: white; /* Input text color */
+        }
+        button {
+            padding: 10px 20px; /* Padding for button */
+            border: none; /* Remove default border */
+            border-radius: 25px; /* Pill-shaped button */
+            background-color: #28a745; /* Green button color */
+            color: white; /* Button text color */
+            font-size: 16px; /* Button font size */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .error-messages {
+            color: red; /* Error message color */
+            font-size: 0.9em; /* Font size for error messages */
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin-bottom: 15px; /* Spacing below error messages */
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a New Expense</h1>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="error-messages">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    
+    <form action="/add_new" method="POST">
+        <label for="category">Category:</label>
+        <input type="text" name="category" value="{{ request.form.get('category', '') }}" required><br>
+
+        <label for="content">Content:</label>
+        <input type="text" name="content" value="{{ request.form.get('content', '') }}" required><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" name="amount" value="{{ request.form.get('amount', '') }}" required><br>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date_added" value="{{ request.form.get('date_added', '') }}" required><br>
+
+        <button type="submit">Add Expense</button>
+    </form>
+</body>
+</html>
