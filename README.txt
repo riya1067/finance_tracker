@@ -7,6 +7,6 @@
  c.content(varchar(50))
  d.amount(decimal(10,2))
  e.date_added(date)
-5.Copy Paste All The Code Here Into Their Respective Files As Per The Image
+5.Copy Paste All The Code Here Into Their Respective Files(main file->Expense_Tracker, within that the static,templates folders with their respective files then the flaskapp.py)
 6.Open Terminal/cmd.exe/powershell with the file and run this ->>> export FLASK_APP as flaskapp.py && flask run(terminal), set FLASK_APP=flaskapp.py (newline) flask run (cmd)
 
