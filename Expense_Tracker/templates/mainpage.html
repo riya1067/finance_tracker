@@ -1,73 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <div class="nav-left">
             <a href="/">Home</a>
             <a href="/analysis">Analysis</a>
-            <a href="/about">About</a>
-            <a class="add-new" href="/add_new">Add New</a>
-            <a href="#" id="editButton" class="nav-link">Edit</a> <!-- Styled as a normal link -->
+            <a class="add-new"href="/add_new">Add New</a>
+            <a href="#"id="editButton"class="nav-link">Edit</a>
         </div>
         <div class="search-container">
-            <form action="/search" method="GET">
-                <input type="text" name="query" placeholder="Search for an entry" value="{{ request.args.get('query') or "" }}">
+            <form action="/search"method="GET">
+                <input type="text" name="query" placeholder="Search for an entry" value="{{request.args.get('query') or ""}}">
             </form>
         </div>
     </nav>
-
-    <!-- Main content displaying posts -->
     <div class="container">
-        {% for post in posts %}
-        <div class="card" data-id="{{ post.id }}">
-            <h2>{{ post.category }}</h2>
-            <p class="date">{{ post.date_added.strftime('%B %d %Y') }}</p>  <!-- Formatted date -->
-            <p>{{ post.content }}</p>
-            <p>{{ post.amount }}</p>
-            
-            <!-- Delete and Update buttons -->
-            <button class="delete-btn" onclick="deletePost({{ post.id }})">Delete</button>
-            <button class="update-btn" onclick="location.href='/update/{{ post.id }}'">Update</button>
+        {%for post in posts%}
+        <div class="card" data-id="{{post.id}}">
+            <h2>{{post.category}}</h2>
+            <p class="date">{{post.date_added.strftime('%B %d %Y')}}</p> 
+            <p>{{post.content}}</p>
+            <p>{{post.amount}}</p>
+            <button class="delete-btn" onclick="deletePost({{post.id}})">Delete</button>
+            <button class="update-btn" onclick="location.href='/update/{{post.id}}'">Update</button>
         </div>
-        {% endfor %}
+        {%endfor%}
     </div>
-
     <script>
-        const editButton = document.getElementById('editButton');
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        const updateButtons = document.querySelectorAll('.update-btn');
-        
-        // Toggle visibility of delete/update buttons
+        const editButton=document.getElementById('editButton');
+        const deleteButtons=document.querySelectorAll('.delete-btn');
+        const updateButtons=document.querySelectorAll('.update-btn');
         editButton.addEventListener('click', function() {
-            deleteButtons.forEach(button => button.style.display = button.style.display === 'none' ? 'inline-block' : 'none');
-            updateButtons.forEach(button => button.style.display = button.style.display === 'none' ? 'inline-block' : 'none');
+            deleteButtons.forEach(button=>button.style.display=button.style.display==='none'?'inline-block':'none');
+            updateButtons.forEach(button=>button.style.display=button.style.display==='none'?'inline-block':'none');
         });
-
-        // Function to delete a post
         function deletePost(postId) {
             if (confirm('Are you sure you want to delete this post?')) {
                 fetch(`/delete/${postId}`, {
-                    method: 'POST',
+                    method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 })
-                .then(response => {
+                .then(response=>{
                     if (response.ok) {
-                        // Reload the page after deletion
                         window.location.reload();
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error=>console.error('Error:', error));
             }
         }
     </script>
 </body>
 </html>
+
